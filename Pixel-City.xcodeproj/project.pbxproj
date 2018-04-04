@@ -13,6 +13,7 @@
 		D744E8DB20734D7B004E97BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D744E8DA20734D7B004E97BC /* Assets.xcassets */; };
 		D744E8DE20734D7B004E97BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D744E8DC20734D7B004E97BC /* LaunchScreen.storyboard */; };
 		D74D13AF2074701200E3C18B /* DroppablePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D13AE2074701200E3C18B /* DroppablePin.swift */; };
+		D7BE7CB32074A179008D33DA /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BE7CB22074A179008D33DA /* PhotoCell.swift */; };
 		E6ADBE8B11F822F00E8912A8 /* Pods_Pixel_City.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CE263E8BDDBB09ABECB415 /* Pods_Pixel_City.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		D744E8DD20734D7B004E97BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D744E8DF20734D7B004E97BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D74D13AE2074701200E3C18B /* DroppablePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroppablePin.swift; sourceTree = "<group>"; };
+		D7BE7CB22074A179008D33DA /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		F1CE263E8BDDBB09ABECB415 /* Pods_Pixel_City.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pixel_City.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				D74D13AE2074701200E3C18B /* DroppablePin.swift */,
+				D7BE7CB22074A179008D33DA /* PhotoCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7BE7CB32074A179008D33DA /* PhotoCell.swift in Sources */,
 				D744E8D620734D79004E97BC /* MapVC.swift in Sources */,
 				D74D13AF2074701200E3C18B /* DroppablePin.swift in Sources */,
 				D744E8D420734D79004E97BC /* AppDelegate.swift in Sources */,
