@@ -24,9 +24,14 @@ class MapVC: UIViewController {
         mapView.delegate = self
         locationManager.delegate = self
         configureLocationServices()
-       
+        doubleTap()
     }
     
+    func doubleTap(){
+        let doubleTap = UITapGestureRecognizer(target: self , action: #selector(MapVC.dropPin(sender:)))
+        doubleTap.numberOfTapsRequired = 2
+        mapView.addGestureRecognizer(doubleTap)
+    }
     
     @IBAction func centerMapBtnPressed(_ sender: UIButton) {
         if authorizationStatus == .authorizedAlways || authorizationStatus == .authorizedWhenInUse  {
@@ -43,6 +48,25 @@ extension MapVC : MKMapViewDelegate {
         let coordinateRegin = MKCoordinateRegionMakeWithDistance(coordinate, regionRadius * 2.0 , regionRadius * 2.0)
         mapView.setRegion(coordinateRegin, animated: true)
         
+    }
+    
+    @objc func dropPin(sender : UITapGestureRecognizer){
+        removePin()
+        
+        let touchPoint = sender.location(in: mapView) //get location
+        let touchCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView) //convert gps
+        
+        let annotation = DroppablePin(coordinate: touchCoordinate, identifier: "droppablePin")
+        mapView.addAnnotation(annotation) // add pin to map view
+        
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(touchCoordinate, regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func removePin(){
+        for annotation in mapView.annotations {
+            mapView.removeAnnotation(annotation)
+        }
     }
 }
 
