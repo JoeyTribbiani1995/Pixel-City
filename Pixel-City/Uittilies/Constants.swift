@@ -17,3 +17,5 @@ func flickUrl(forApiKey key : String , withAnnotation annotation : DroppablePin 
     
     return BASE_URL
 }
+
+typealias CompletionHandler = (_ success : Bool ) -> ()

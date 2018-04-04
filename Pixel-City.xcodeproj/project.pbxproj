@@ -13,8 +13,12 @@
 		D744E8DB20734D7B004E97BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D744E8DA20734D7B004E97BC /* Assets.xcassets */; };
 		D744E8DE20734D7B004E97BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D744E8DC20734D7B004E97BC /* LaunchScreen.storyboard */; };
 		D74D13AF2074701200E3C18B /* DroppablePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D13AE2074701200E3C18B /* DroppablePin.swift */; };
+		D78BA6DF2074C86F00280B30 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78BA6DE2074C86F00280B30 /* SwiftyJSON.framework */; };
+		D78BA6E12074C87300280B30 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78BA6E02074C87300280B30 /* Alamofire.framework */; };
+		D78BA6E32074C87600280B30 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78BA6E22074C87600280B30 /* AlamofireImage.framework */; };
 		D7BE7CB32074A179008D33DA /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BE7CB22074A179008D33DA /* PhotoCell.swift */; };
 		D7BE7CB82074A95B008D33DA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BE7CB72074A95B008D33DA /* Constants.swift */; };
+		D7BE7CBA2074C21B008D33DA /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BE7CB92074C21B008D33DA /* ImageService.swift */; };
 		E6ADBE8B11F822F00E8912A8 /* Pods_Pixel_City.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CE263E8BDDBB09ABECB415 /* Pods_Pixel_City.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,8 +33,12 @@
 		D744E8DD20734D7B004E97BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D744E8DF20734D7B004E97BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D74D13AE2074701200E3C18B /* DroppablePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroppablePin.swift; sourceTree = "<group>"; };
+		D78BA6DE2074C86F00280B30 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D78BA6E02074C87300280B30 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D78BA6E22074C87600280B30 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7BE7CB22074A179008D33DA /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		D7BE7CB72074A95B008D33DA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D7BE7CB92074C21B008D33DA /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		F1CE263E8BDDBB09ABECB415 /* Pods_Pixel_City.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pixel_City.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -39,6 +47,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D78BA6E32074C87600280B30 /* AlamofireImage.framework in Frameworks */,
+				D78BA6E12074C87300280B30 /* Alamofire.framework in Frameworks */,
+				D78BA6DF2074C86F00280B30 /* SwiftyJSON.framework in Frameworks */,
 				E6ADBE8B11F822F00E8912A8 /* Pods_Pixel_City.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,6 +60,9 @@
 		CAC1194C9789DCC942233142 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D78BA6E22074C87600280B30 /* AlamofireImage.framework */,
+				D78BA6E02074C87300280B30 /* Alamofire.framework */,
+				D78BA6DE2074C86F00280B30 /* SwiftyJSON.framework */,
 				F1CE263E8BDDBB09ABECB415 /* Pods_Pixel_City.framework */,
 			);
 			name = Frameworks;
@@ -132,6 +146,7 @@
 		D7BE7CB62074A794008D33DA /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D7BE7CB92074C21B008D33DA /* ImageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -257,11 +272,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Pixel-City/Pods-Pixel-City-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -280,6 +297,7 @@
 				D74D13AF2074701200E3C18B /* DroppablePin.swift in Sources */,
 				D7BE7CB82074A95B008D33DA /* Constants.swift in Sources */,
 				D744E8D420734D79004E97BC /* AppDelegate.swift in Sources */,
+				D7BE7CBA2074C21B008D33DA /* ImageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
