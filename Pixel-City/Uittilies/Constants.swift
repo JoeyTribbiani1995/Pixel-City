@@ -25,3 +25,6 @@ let NOTIF_COUNT_IMAGESDOWNLOADED = Notification.Name("countimagesdownloaded")
 
 
 let TO_POPVC = "toPopVC"
+
+
+let IDENTIFIER_STORYBOARD_POPVC = "PopVC"

@@ -48,6 +48,8 @@ class MapVC: UIViewController {
         pullUpView.addSubview(collectionView!)
         
         NotificationCenter.default.addObserver(self, selector: #selector(MapVC.updateProgressLbl(_:)), name: NOTIF_COUNT_IMAGESDOWNLOADED, object: nil)
+        
+        registerForPreviewing(with: self, sourceView: collectionView!)
     }
     
     func doubleTap(){
@@ -240,8 +242,28 @@ extension MapVC : UICollectionViewDelegate , UICollectionViewDataSource {
         
         performSegue(withIdentifier: TO_POPVC , sender: nil)
     }
-    
+}
 
+//touch 3d
+extension MapVC : UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = collectionView?.indexPathForItem(at: location) , let cell = collectionView?.cellForItem(at: indexPath) else { return nil }
+        
+        let image = ImageService.instance.imageArray[indexPath.row]
+        ImageService.instance.imageSelected = image
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: IDENTIFIER_STORYBOARD_POPVC) as? PopVC else { return nil }
+        
+        
+        previewingContext.sourceRect = cell.contentView.frame
+        
+        return popVC
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: self)
+    }
+    
+    
 }
 
 
