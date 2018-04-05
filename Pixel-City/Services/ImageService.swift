@@ -22,7 +22,7 @@ class ImageService {
     var imageArray = [UIImage]()
     
     func retriveUrls(forAnnotation annotation : DroppablePin , completion : @escaping CompletionHandler){
-        ImageService.instance.imageUrlArray = []
+        imageUrlArray.removeAll()
         
         Alamofire.request(flickUrl(forApiKey: API_KEY, withAnnotation: annotation, andNumberOfPhotos: 40)).responseJSON { (response) in
             if response.result.error == nil {

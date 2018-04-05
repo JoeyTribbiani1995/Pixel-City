@@ -43,7 +43,7 @@ class MapVC: UIViewController {
         collectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: "photoCell")
         collectionView?.delegate = self
         collectionView?.dataSource = self
-        collectionView?.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        collectionView?.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
         
         pullUpView.addSubview(collectionView!)
         
@@ -150,6 +150,12 @@ extension MapVC : MKMapViewDelegate {
         addProgressLbl()
         
         ImageService.instance.cancelAllSessions()
+        ImageService.instance.imageArray.removeAll()
+        ImageService.instance.imageUrlArray.removeAll()
+        
+        collectionView?.reloadData()
+        
+        
         
         let touchPoint = sender.location(in: mapView) //get location
         let touchCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView) //convert gps
@@ -171,6 +177,7 @@ extension MapVC : MKMapViewDelegate {
                        
                         self.removeSpinner()
                         self.removeProgressLbl()
+                        self.collectionView?.reloadData()
                         
                     }
                 }
@@ -210,14 +217,22 @@ extension MapVC : UICollectionViewDelegate , UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return ImageService.instance.imageArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell
-        
-        return cell!
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell {
+            
+            let image = ImageService.instance.imageArray[indexPath.row]
+            let imageView = UIImageView(image: image)
+            cell.addSubview(imageView)
+            
+            return cell
+        }else {
+             return PhotoCell()
+        }
     }
+
 }
 
 
