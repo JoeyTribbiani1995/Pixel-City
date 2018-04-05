@@ -13,6 +13,7 @@
 		D744E8DB20734D7B004E97BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D744E8DA20734D7B004E97BC /* Assets.xcassets */; };
 		D744E8DE20734D7B004E97BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D744E8DC20734D7B004E97BC /* LaunchScreen.storyboard */; };
 		D74C98652075F3C900FD8620 /* PopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C98642075F3C900FD8620 /* PopVC.swift */; };
+		D74C988920765D6C00FD8620 /* ObjectImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C988820765D6C00FD8620 /* ObjectImage.swift */; };
 		D74D13AF2074701200E3C18B /* DroppablePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D13AE2074701200E3C18B /* DroppablePin.swift */; };
 		D78BA6DF2074C86F00280B30 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78BA6DE2074C86F00280B30 /* SwiftyJSON.framework */; };
 		D78BA6E12074C87300280B30 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78BA6E02074C87300280B30 /* Alamofire.framework */; };
@@ -34,6 +35,7 @@
 		D744E8DD20734D7B004E97BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D744E8DF20734D7B004E97BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D74C98642075F3C900FD8620 /* PopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopVC.swift; sourceTree = "<group>"; };
+		D74C988820765D6C00FD8620 /* ObjectImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectImage.swift; sourceTree = "<group>"; };
 		D74D13AE2074701200E3C18B /* DroppablePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroppablePin.swift; sourceTree = "<group>"; };
 		D78BA6DE2074C86F00280B30 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D78BA6E02074C87300280B30 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 		D744E8E820734DC1004E97BC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D74C988820765D6C00FD8620 /* ObjectImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				D74C98652075F3C900FD8620 /* PopVC.swift in Sources */,
 				D74D13AF2074701200E3C18B /* DroppablePin.swift in Sources */,
 				D7BE7CB82074A95B008D33DA /* Constants.swift in Sources */,
+				D74C988920765D6C00FD8620 /* ObjectImage.swift in Sources */,
 				D744E8D420734D79004E97BC /* AppDelegate.swift in Sources */,
 				D7BE7CBA2074C21B008D33DA /* ImageService.swift in Sources */,
 			);

@@ -117,20 +117,43 @@
                                     <constraint firstAttribute="height" constant="30" id="vcA-I1-Dec"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qJ-hM-56m">
+                                <rect key="frame" x="16" y="20" width="343" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="8dE-oc-9aE"/>
+                                    <constraint firstAttribute="width" constant="343" id="dX2-jc-GYB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQ0-Tc-JhO">
+                                <rect key="frame" x="16" y="99" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Txm-1m-pes"/>
+                                    <constraint firstAttribute="width" constant="100" id="bAe-U0-Y9z"/>
+                                </constraints>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="AQ0-Tc-JhO" firstAttribute="leading" secondItem="apq-jB-lAe" secondAttribute="leading" constant="16" id="7qh-9U-2jU"/>
                             <constraint firstItem="7zu-zB-D6z" firstAttribute="leading" secondItem="apq-jB-lAe" secondAttribute="leading" id="8fB-Qc-blH"/>
                             <constraint firstItem="7zu-zB-D6z" firstAttribute="trailing" secondItem="apq-jB-lAe" secondAttribute="trailing" id="Efe-Wf-fyE"/>
+                            <constraint firstItem="5qJ-hM-56m" firstAttribute="centerX" secondItem="RC1-3a-VCa" secondAttribute="centerX" id="Ljp-7Z-DN2"/>
                             <constraint firstItem="7zu-zB-D6z" firstAttribute="top" secondItem="RC1-3a-VCa" secondAttribute="top" id="Uww-LK-NnZ"/>
                             <constraint firstItem="7zu-zB-D6z" firstAttribute="bottom" secondItem="apq-jB-lAe" secondAttribute="bottom" id="XfP-zo-SCn"/>
+                            <constraint firstItem="AQ0-Tc-JhO" firstAttribute="top" secondItem="5qJ-hM-56m" secondAttribute="bottom" constant="21" id="cTj-Pv-npL"/>
                             <constraint firstItem="DEk-1z-taS" firstAttribute="centerX" secondItem="RC1-3a-VCa" secondAttribute="centerX" id="fhZ-rc-NXg"/>
+                            <constraint firstItem="5qJ-hM-56m" firstAttribute="top" secondItem="apq-jB-lAe" secondAttribute="top" id="hm0-GR-pCh"/>
                             <constraint firstItem="apq-jB-lAe" firstAttribute="bottom" secondItem="DEk-1z-taS" secondAttribute="bottom" constant="20" id="yww-yh-dF3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="apq-jB-lAe"/>
                     </view>
                     <connections>
+                        <outlet property="mapView" destination="AQ0-Tc-JhO" id="fxC-6S-fmy"/>
                         <outlet property="popImageView" destination="7zu-zB-D6z" id="F2V-Zp-vJ5"/>
+                        <outlet property="titleImageLbl" destination="5qJ-hM-56m" id="Xvx-Z5-gbU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hf-h1-gr9" userLabel="First Responder" sceneMemberID="firstResponder"/>

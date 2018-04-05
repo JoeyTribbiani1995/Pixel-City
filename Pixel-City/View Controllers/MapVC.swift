@@ -118,7 +118,7 @@ class MapVC: UIViewController {
     }
     
     @objc func updateProgressLbl(_ notifi : Notification){
-        progressLbl?.text = "\(ImageService.instance.imageArray.count)/40 images downloaded"
+        progressLbl?.text = "\(ImageService.instance.objectImages.count)/40 images downloaded"
     }
     
 }
@@ -152,7 +152,7 @@ extension MapVC : MKMapViewDelegate {
         addProgressLbl()
         
         ImageService.instance.cancelAllSessions()
-        ImageService.instance.imageArray.removeAll()
+        ImageService.instance.objectImages.removeAll()
         ImageService.instance.imageUrlArray.removeAll()
         
         collectionView?.reloadData()
@@ -161,6 +161,9 @@ extension MapVC : MKMapViewDelegate {
         
         let touchPoint = sender.location(in: mapView) //get location
         let touchCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView) //convert gps
+        
+        
+        ImageService.instance.touchPoint = touchCoordinate // get point to pop vc
         
         let annotation = DroppablePin(coordinate: touchCoordinate, identifier: "droppablePin")
         mapView.addAnnotation(annotation) // add pin to map view
@@ -176,13 +179,15 @@ extension MapVC : MKMapViewDelegate {
                 ImageService.instance.retrieveImages { (success) in
                     if success {
                         print("--------success retrieve image ")
-                       
+
                         self.removeSpinner()
                         self.removeProgressLbl()
                         self.collectionView?.reloadData()
-                        
+                        print(ImageService.instance.objectImages.count,"-------------")
+
                     }
                 }
+                
             }
         }
         
@@ -219,14 +224,14 @@ extension MapVC : UICollectionViewDelegate , UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ImageService.instance.imageArray.count
+        return ImageService.instance.objectImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell {
             
-            let image = ImageService.instance.imageArray[indexPath.row]
-            let imageView = UIImageView(image: image)
+            let objectImage = ImageService.instance.objectImages[indexPath.row]
+            let imageView = UIImageView(image: objectImage.image)
             cell.addSubview(imageView)
             
             return cell
@@ -237,9 +242,8 @@ extension MapVC : UICollectionViewDelegate , UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let image = ImageService.instance.imageArray[indexPath.row]
-        ImageService.instance.imageSelected = image
-        
+        let objectImage = ImageService.instance.objectImages[indexPath.row]
+        ImageService.instance.objectImageSelected = objectImage
         performSegue(withIdentifier: TO_POPVC , sender: nil)
     }
 }
@@ -248,11 +252,10 @@ extension MapVC : UICollectionViewDelegate , UICollectionViewDataSource {
 extension MapVC : UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         guard let indexPath = collectionView?.indexPathForItem(at: location) , let cell = collectionView?.cellForItem(at: indexPath) else { return nil }
+        let objectImage = ImageService.instance.objectImages[indexPath.row]
+        ImageService.instance.objectImageSelected = objectImage
         
-        let image = ImageService.instance.imageArray[indexPath.row]
-        ImageService.instance.imageSelected = image
         guard let popVC = storyboard?.instantiateViewController(withIdentifier: IDENTIFIER_STORYBOARD_POPVC) as? PopVC else { return nil }
-        
         
         previewingContext.sourceRect = cell.contentView.frame
         
