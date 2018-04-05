@@ -16,10 +16,11 @@ class ImageService {
     
     static let instance = ImageService()
     
-    let mapVC = MapVC()
-   
+    var imageSelected : UIImage?
     var imageUrlArray = [String]()
     var imageArray = [UIImage]()
+    
+    
     
     func retriveUrls(forAnnotation annotation : DroppablePin , completion : @escaping CompletionHandler){
         imageUrlArray.removeAll()

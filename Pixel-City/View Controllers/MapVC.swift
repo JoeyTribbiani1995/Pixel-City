@@ -232,6 +232,15 @@ extension MapVC : UICollectionViewDelegate , UICollectionViewDataSource {
              return PhotoCell()
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let image = ImageService.instance.imageArray[indexPath.row]
+        ImageService.instance.imageSelected = image
+        
+        performSegue(withIdentifier: TO_POPVC , sender: nil)
+    }
+    
 
 }
 

@@ -22,3 +22,6 @@ typealias CompletionHandler = (_ success : Bool ) -> ()
 
 
 let NOTIF_COUNT_IMAGESDOWNLOADED = Notification.Name("countimagesdownloaded")
+
+
+let TO_POPVC = "toPopVC"
