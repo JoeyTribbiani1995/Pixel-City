@@ -15,8 +15,11 @@ import SwiftyJSON
 class ImageService {
     
     static let instance = ImageService()
+    
+    let mapVC = MapVC()
    
     var imageUrlArray = [String]()
+    var imageArray = [UIImage]()
     
     func retriveUrls(forAnnotation annotation : DroppablePin , completion : @escaping CompletionHandler){
         ImageService.instance.imageUrlArray = []
@@ -40,5 +43,50 @@ class ImageService {
             }
         }
     }
+    
+    func retrieveImages(completion : @escaping CompletionHandler){
+        imageArray.removeAll()
+        
+        for url in imageUrlArray {
+            Alamofire.request(url).responseImage { (response) in
+                if response.result.error == nil {
+                    guard let dataImage = response.result.value else { return }
+                    
+                    self.imageArray.append(dataImage)
+                    
+                    NotificationCenter.default.post(name: NOTIF_COUNT_IMAGESDOWNLOADED, object: nil)
+                   
+                    if self.imageArray.count == self.imageUrlArray.count {
+                        completion(true)
+                    }
+                }else {
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+        }
+    }
+    
+    func cancelAllSessions(){
+        Alamofire.SessionManager.default.session.getTasksWithCompletionHandler { (sessionDataTask, uploadData, downloadData) in
+            sessionDataTask.forEach({$0.cancel()})
+            downloadData.forEach({$0.cancel()})
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

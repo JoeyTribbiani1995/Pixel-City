@@ -46,6 +46,8 @@ class MapVC: UIViewController {
         collectionView?.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         
         pullUpView.addSubview(collectionView!)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(MapVC.updateProgressLbl(_:)), name: NOTIF_COUNT_IMAGESDOWNLOADED, object: nil)
     }
     
     func doubleTap(){
@@ -78,6 +80,8 @@ class MapVC: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
+        
+        ImageService.instance.cancelAllSessions()
     }
     
     func addSpinner(){
@@ -111,6 +115,9 @@ class MapVC: UIViewController {
         }
     }
     
+    @objc func updateProgressLbl(_ notifi : Notification){
+        progressLbl?.text = "\(ImageService.instance.imageArray.count)/40 images downloaded"
+    }
     
 }
 
@@ -142,6 +149,8 @@ extension MapVC : MKMapViewDelegate {
         addSpinner()
         addProgressLbl()
         
+        ImageService.instance.cancelAllSessions()
+        
         let touchPoint = sender.location(in: mapView) //get location
         let touchCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView) //convert gps
         
@@ -155,8 +164,19 @@ extension MapVC : MKMapViewDelegate {
             if success {
                 print("success  retrive urls -------------")
                 print(ImageService.instance.imageUrlArray)
+                
+                ImageService.instance.retrieveImages { (success) in
+                    if success {
+                        print("--------success retrieve image ")
+                       
+                        self.removeSpinner()
+                        self.removeProgressLbl()
+                        
+                    }
+                }
             }
         }
+        
     }
     
     func removePin(){

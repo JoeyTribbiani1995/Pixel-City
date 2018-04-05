@@ -19,3 +19,6 @@ func flickUrl(forApiKey key : String , withAnnotation annotation : DroppablePin 
 }
 
 typealias CompletionHandler = (_ success : Bool ) -> ()
+
+
+let NOTIF_COUNT_IMAGESDOWNLOADED = Notification.Name("countimagesdownloaded")
